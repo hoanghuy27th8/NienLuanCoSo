@@ -175,7 +175,7 @@ public class Fm_Trangchu extends javax.swing.JFrame {
         tbl_CTDH_TimThay.setColumnIdentifiers(cot_ctdh);
         tbl_ChiTietDonHang.setModel(tbl_CTDH_TimThay);
     }
-// test git thôi chứ không có gì
+
     public void data_table_DH() throws Exception { // bảng dữ liệu  toàn bộ đơn hàng khi vừa mở form đã có. Để gọi lại khi ấn nút Làm mới
         DonHang_Module dhm = new DonHang_Module();
         ChiTietDonHang_Module ctdhm = new ChiTietDonHang_Module();
