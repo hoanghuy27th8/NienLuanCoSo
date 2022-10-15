@@ -2298,7 +2298,7 @@ public class Fm_Trangchu extends javax.swing.JFrame {
             data_table_nv();
         } catch (Exception e) {
             System.out.println(e);
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Thêm không thành công");
         }
     }//GEN-LAST:event_btn_LuuNVActionPerformed
 
@@ -2797,7 +2797,6 @@ public class Fm_Trangchu extends javax.swing.JFrame {
             for (ChiTietDonHang c : list_SpDHtam) {
                 ctm.themCTDH(c);
             }
-            evenOpenWindowForDonHang(); // gọi lại hàm để khởi tạo lại đơn hàng mới
             data_table_DH();
             evenOpenWindowForThongKe();
 //            btn_InHD.setEnabled(true);
@@ -2822,7 +2821,6 @@ public class Fm_Trangchu extends javax.swing.JFrame {
                         ctm.themCTDH(c);
                     }
                     JOptionPane.showMessageDialog(this, "Đã thêm đơn hàng thành công Ngoại lệ e1");
-                    evenOpenWindowForDonHang(); // gọi lại hàm để khởi tạo lại đơn hàng mới 
                     data_table_DH();
                     evenOpenWindowForThongKe();
 //                    btn_InHD.setEnabled(true);
@@ -2834,7 +2832,6 @@ public class Fm_Trangchu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_LuuHDActionPerformed
 // Code khi ấn nút thêm để thêm sản phẩm vào 1 đơn hàng (đang dùng 1 list_SPTam để lưu tất cả hàng hóa đã thêm)
-
     public boolean kiemtratontai(String ma) {
         for (ChiTietDonHang c : list_SpDHtam) {
             if (c.getMa_HH().equals(ma)) {
@@ -2918,6 +2915,11 @@ public class Fm_Trangchu extends javax.swing.JFrame {
         txt_MaSp.setText("");
         txt_TenSP.setText("");
         cboTimKiemSP.setSelectedIndex(0);
+        try {
+            evenOpenWindowForDonHang();
+        } catch (Exception ex) {
+            Logger.getLogger(Fm_Trangchu.class.getName()).log(Level.SEVERE, null, ex);
+        }
 //        btn_InHD.setEnabled(false);
         data_table_dhTam();
     }//GEN-LAST:event_btn_LamMoiDHActionPerformed
@@ -3286,10 +3288,11 @@ public class Fm_Trangchu extends javax.swing.JFrame {
         }
         try {
             if(txt_SL.getText().equals("")) return;
-            if (Integer.parseInt(txt_SL.getText()) > max) {
+            if (Integer.parseInt(txt_SL.getText()) > max) { // nếu số lượng nhập vào quá thì hiển thị lỗi và ẩn nút Thêm <=> Hiện nút thêm
                 JOptionPane.showMessageDialog(this, "Vượt quá số lượng còn rồi!", "Cảnh Báo", JOptionPane.WARNING_MESSAGE);
+                btn_ThemSPvaoDH.setEnabled(false);
                 return;
-            }
+            }else btn_ThemSPvaoDH.setEnabled(true);
         } catch (Exception e) {
             System.out.println("Sản phẩm: "+txt_MaSp.getText() +" Số lượng: "+max);
         }
@@ -3355,8 +3358,8 @@ public class Fm_Trangchu extends javax.swing.JFrame {
                 cell.setCellStyle(caitienStyle_Vanban(w, caitienFont_Vanban(w)));
                 sheet.autoSizeColumn(1);
                 
-                cell = row.createCell(2, CellType.NUMERIC);
-                cell.setCellValue(list_HH.get(i).getHH_Slcon());
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue(String.valueOf(list_HH.get(i).getHH_Slcon()));
                 cell.setCellStyle(caitienStyle_Vanban2(w, caitienFont_Vanban(w)));
                 sheet.autoSizeColumn(2);
                 
@@ -3365,8 +3368,8 @@ public class Fm_Trangchu extends javax.swing.JFrame {
                 cell.setCellStyle(caitienStyle_Vanban2(w, caitienFont_Vanban(w)));
                 sheet.autoSizeColumn(3);
                 
-                cell = row.createCell(4, CellType.NUMERIC);
-                cell.setCellValue(list_HH.get(i).getHH_Gia());
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue(String.valueOf(list_HH.get(i).getHH_Gia()));
                 cell.setCellStyle(caitienStyle_Vanban2(w, caitienFont_Vanban(w)));
                 sheet.autoSizeColumn(4);
                 
@@ -3437,7 +3440,7 @@ public class Fm_Trangchu extends javax.swing.JFrame {
             Connection con = data_main.connect_main();
             JasperPrint jp = JasperFillManager.fillReport(jr, map, con);
             JasperViewer.viewReport(jp, false);
-//            JOptionPane.showMessageDialog(this, "In thành công");
+            btn_LamMoiDHActionPerformed(evt); // Làm mới đơn hàng
         } catch (Exception e) {
             e.printStackTrace();
         }

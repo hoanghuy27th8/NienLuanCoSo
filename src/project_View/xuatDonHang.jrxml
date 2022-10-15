@@ -69,7 +69,7 @@ where dh.DH_MaDH = $P{MaDH};]]>
 				</textElement>
 				<text><![CDATA[Ngày lập:]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement x="67" y="20" width="95" height="20" uuid="abfd662c-e951-4622-86dd-c572161aec7f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
