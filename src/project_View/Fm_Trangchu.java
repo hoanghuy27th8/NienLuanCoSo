@@ -2620,7 +2620,7 @@ public class Fm_Trangchu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e, "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_SuaHHActionPerformed
-
+//test thôi
     private void btn_XoaHHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaHHActionPerformed
         try {
             HangHoa_Module hhm = new HangHoa_Module();
