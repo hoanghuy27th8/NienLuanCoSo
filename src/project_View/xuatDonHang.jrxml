@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6dec83ce-ffe0-488b-8f3a-2a55106de89c">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="MaDH" class="java.lang.String">
@@ -32,6 +32,67 @@ where dh.DH_MaDH = $P{MaDH};]]>
 	<variable name="tru" class="java.lang.Long">
 		<variableExpression><![CDATA[$F{DH_TongTien}.longValue()-$F{DH_TienGiam}.longValue()]]></variableExpression>
 	</variable>
+	<group name="sum">
+		<groupFooter>
+			<band height="95">
+				<staticText>
+					<reportElement x="224" y="7" width="60" height="20" uuid="6450a3a6-9d09-4fe1-939f-d6113f2fb139"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
+					</textElement>
+					<text><![CDATA[Tiền giảm:]]></text>
+				</staticText>
+				<textField pattern="#,##0 VNĐ">
+					<reportElement x="284" y="7" width="97" height="20" uuid="7e970832-3da3-4555-a3cf-71f691385e88"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{DH_TienGiam}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="224" y="27" width="60" height="20" uuid="a8eaa3a5-fcd5-45a8-bd4e-1c4eba4d897d"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
+					</textElement>
+					<text><![CDATA[Tổng tiền:]]></text>
+				</staticText>
+				<textField pattern="#,##0 VNĐ">
+					<reportElement x="284" y="27" width="97" height="20" uuid="954f0e60-6407-48df-9c4a-6df24d1e2667"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{DH_TongTien}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="224" y="47" width="60" height="20" uuid="1770de71-bae4-4129-9d54-3d729a03df48"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
+					</textElement>
+					<text><![CDATA[Tổng thu:]]></text>
+				</staticText>
+				<textField pattern="#,##0 VNĐ">
+					<reportElement x="284" y="47" width="97" height="20" uuid="cef32d7a-208a-4268-bbbb-6fcf3c7a2bcb"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{tru}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="67" width="381" height="25" uuid="2e615a00-ed41-41cc-ae92-59cb4f4d823c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="16" isBold="true" isItalic="true" isStrikeThrough="false" pdfEncoding="Cp1258"/>
+					</textElement>
+					<text><![CDATA[Rất vui được phục vụ quý khách]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="6" width="381" height="1" uuid="81785e87-449c-4e42-8d10-b7a662a8f515"/>
+					<graphicElement>
+						<pen lineStyle="Dotted"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -197,7 +258,7 @@ where dh.DH_MaDH = $P{MaDH};]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="23" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="56" height="20" uuid="4e7a685b-d0d0-4aeb-82d5-0bbc0a661df2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -236,64 +297,10 @@ where dh.DH_MaDH = $P{MaDH};]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="62" splitType="Stretch">
-			<staticText>
-				<reportElement x="213" y="2" width="60" height="20" uuid="6450a3a6-9d09-4fe1-939f-d6113f2fb139"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
-				</textElement>
-				<text><![CDATA[Tiền giảm:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="213" y="22" width="60" height="20" uuid="a8eaa3a5-fcd5-45a8-bd4e-1c4eba4d897d"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
-				</textElement>
-				<text><![CDATA[Tổng tiền:]]></text>
-			</staticText>
-			<textField pattern="#,##0 VNĐ">
-				<reportElement x="273" y="2" width="97" height="20" uuid="7e970832-3da3-4555-a3cf-71f691385e88"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{DH_TienGiam}]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0 VNĐ">
-				<reportElement x="273" y="22" width="97" height="20" uuid="954f0e60-6407-48df-9c4a-6df24d1e2667"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{DH_TongTien}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="213" y="42" width="60" height="20" uuid="1770de71-bae4-4129-9d54-3d729a03df48"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
-				</textElement>
-				<text><![CDATA[Tổng thu:]]></text>
-			</staticText>
-			<textField pattern="#,##0 VNĐ">
-				<reportElement x="273" y="42" width="97" height="20" uuid="cef32d7a-208a-4268-bbbb-6fcf3c7a2bcb"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{tru}]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="0" y="0" width="381" height="1" uuid="41bcf005-f08a-4eaf-8625-344113c70c8d"/>
-			</line>
-		</band>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="0" width="381" height="25" uuid="2e615a00-ed41-41cc-ae92-59cb4f4d823c"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DialogInput" size="16" isItalic="true" isStrikeThrough="false" pdfEncoding="Cp1258"/>
-				</textElement>
-				<text><![CDATA[Rất vui được phục vụ quý khách]]></text>
-			</staticText>
-		</band>
+		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>
