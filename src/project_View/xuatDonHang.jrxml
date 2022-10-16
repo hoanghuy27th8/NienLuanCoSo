@@ -36,43 +36,43 @@ where dh.DH_MaDH = $P{MaDH};]]>
 		<groupFooter>
 			<band height="95">
 				<staticText>
-					<reportElement x="224" y="7" width="60" height="20" uuid="6450a3a6-9d09-4fe1-939f-d6113f2fb139"/>
+					<reportElement x="237" y="7" width="60" height="20" uuid="6450a3a6-9d09-4fe1-939f-d6113f2fb139"/>
 					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
 					</textElement>
 					<text><![CDATA[Tiền giảm:]]></text>
 				</staticText>
 				<textField pattern="#,##0 VNĐ">
-					<reportElement x="284" y="7" width="97" height="20" uuid="7e970832-3da3-4555-a3cf-71f691385e88"/>
-					<textElement verticalAlignment="Middle">
+					<reportElement x="297" y="7" width="84" height="20" uuid="7e970832-3da3-4555-a3cf-71f691385e88"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font fontName="Arial" size="10"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{DH_TienGiam}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="224" y="27" width="60" height="20" uuid="a8eaa3a5-fcd5-45a8-bd4e-1c4eba4d897d"/>
+					<reportElement x="237" y="27" width="60" height="20" uuid="a8eaa3a5-fcd5-45a8-bd4e-1c4eba4d897d"/>
 					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
 					</textElement>
 					<text><![CDATA[Tổng tiền:]]></text>
 				</staticText>
 				<textField pattern="#,##0 VNĐ">
-					<reportElement x="284" y="27" width="97" height="20" uuid="954f0e60-6407-48df-9c4a-6df24d1e2667"/>
-					<textElement verticalAlignment="Middle">
+					<reportElement x="297" y="27" width="84" height="20" uuid="954f0e60-6407-48df-9c4a-6df24d1e2667"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font fontName="Arial" size="10"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{DH_TongTien}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="224" y="47" width="60" height="20" uuid="1770de71-bae4-4129-9d54-3d729a03df48"/>
+					<reportElement x="237" y="47" width="60" height="20" uuid="1770de71-bae4-4129-9d54-3d729a03df48"/>
 					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
 					</textElement>
 					<text><![CDATA[Tổng thu:]]></text>
 				</staticText>
 				<textField pattern="#,##0 VNĐ">
-					<reportElement x="284" y="47" width="97" height="20" uuid="cef32d7a-208a-4268-bbbb-6fcf3c7a2bcb"/>
-					<textElement verticalAlignment="Middle">
+					<reportElement x="297" y="47" width="84" height="20" uuid="cef32d7a-208a-4268-bbbb-6fcf3c7a2bcb"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
 						<font fontName="Arial" size="10"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{tru}]]></textFieldExpression>
@@ -233,7 +233,7 @@ where dh.DH_MaDH = $P{MaDH};]]>
 			</staticText>
 			<staticText>
 				<reportElement x="162" y="9" width="82" height="20" uuid="dadaab68-c571-4163-be92-704b949acfbd"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
 				</textElement>
 				<text><![CDATA[Tên loại hàng]]></text>
@@ -267,7 +267,7 @@ where dh.DH_MaDH = $P{MaDH};]]>
 				<textFieldExpression><![CDATA[$F{HH_MaHH}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="67" y="0" width="95" height="20" uuid="c103c0d8-0363-4f26-b49f-b18f67af1656"/>
+				<reportElement x="56" y="0" width="106" height="20" uuid="c103c0d8-0363-4f26-b49f-b18f67af1656"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
@@ -289,7 +289,7 @@ where dh.DH_MaDH = $P{MaDH};]]>
 			</textField>
 			<textField>
 				<reportElement x="162" y="0" width="82" height="20" uuid="9e980949-2b43-42ae-ab50-15b7d809eae7"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{LH_TenLH}]]></textFieldExpression>
