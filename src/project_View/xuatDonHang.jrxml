@@ -36,51 +36,51 @@ where dh.DH_MaDH = $P{MaDH};]]>
 		<groupFooter>
 			<band height="95">
 				<staticText>
-					<reportElement x="237" y="7" width="60" height="20" uuid="6450a3a6-9d09-4fe1-939f-d6113f2fb139"/>
-					<textElement textAlignment="Justified" verticalAlignment="Middle">
-						<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
+					<reportElement x="0" y="7" width="104" height="20" uuid="6450a3a6-9d09-4fe1-939f-d6113f2fb139"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true" pdfEncoding="Cp1258"/>
 					</textElement>
 					<text><![CDATA[Tiền giảm:]]></text>
 				</staticText>
 				<textField pattern="#,##0 VNĐ">
-					<reportElement x="297" y="7" width="84" height="20" uuid="7e970832-3da3-4555-a3cf-71f691385e88"/>
-					<textElement textAlignment="Justified" verticalAlignment="Middle">
-						<font fontName="Arial" size="10"/>
+					<reportElement x="244" y="7" width="137" height="20" uuid="7e970832-3da3-4555-a3cf-71f691385e88"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{DH_TienGiam}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="237" y="27" width="60" height="20" uuid="a8eaa3a5-fcd5-45a8-bd4e-1c4eba4d897d"/>
-					<textElement textAlignment="Justified" verticalAlignment="Middle">
-						<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
+					<reportElement x="0" y="27" width="104" height="20" uuid="a8eaa3a5-fcd5-45a8-bd4e-1c4eba4d897d"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true" pdfEncoding="Cp1258"/>
 					</textElement>
 					<text><![CDATA[Tổng tiền:]]></text>
 				</staticText>
 				<textField pattern="#,##0 VNĐ">
-					<reportElement x="297" y="27" width="84" height="20" uuid="954f0e60-6407-48df-9c4a-6df24d1e2667"/>
-					<textElement textAlignment="Justified" verticalAlignment="Middle">
-						<font fontName="Arial" size="10"/>
+					<reportElement x="244" y="27" width="137" height="20" uuid="954f0e60-6407-48df-9c4a-6df24d1e2667"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{DH_TongTien}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="237" y="47" width="60" height="20" uuid="1770de71-bae4-4129-9d54-3d729a03df48"/>
-					<textElement textAlignment="Justified" verticalAlignment="Middle">
-						<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
+					<reportElement x="2" y="47" width="102" height="20" uuid="1770de71-bae4-4129-9d54-3d729a03df48"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true" pdfEncoding="Cp1258"/>
 					</textElement>
 					<text><![CDATA[Tổng thu:]]></text>
 				</staticText>
 				<textField pattern="#,##0 VNĐ">
-					<reportElement x="297" y="47" width="84" height="20" uuid="cef32d7a-208a-4268-bbbb-6fcf3c7a2bcb"/>
-					<textElement textAlignment="Justified" verticalAlignment="Middle">
-						<font fontName="Arial" size="10"/>
+					<reportElement x="244" y="47" width="137" height="20" uuid="cef32d7a-208a-4268-bbbb-6fcf3c7a2bcb"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$V{tru}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="67" width="381" height="25" uuid="2e615a00-ed41-41cc-ae92-59cb4f4d823c"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="16" isBold="true" isItalic="true" isStrikeThrough="false" pdfEncoding="Cp1258"/>
+						<font fontName="Bahnschrift" size="16" isBold="false" isItalic="true" isStrikeThrough="false" pdfEncoding="Cp1258"/>
 					</textElement>
 					<text><![CDATA[Rất vui được phục vụ quý khách]]></text>
 				</staticText>
@@ -194,14 +194,14 @@ where dh.DH_MaDH = $P{MaDH};]]>
 				<textFieldExpression><![CDATA[$F{KH_SDT}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="190" y="60" width="54" height="20" uuid="9bf25513-5f2d-4d53-acc1-ef4202abe9b6"/>
+				<reportElement x="190" y="61" width="44" height="20" uuid="9bf25513-5f2d-4d53-acc1-ef4202abe9b6"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true" pdfEncoding="Cp1258"/>
 				</textElement>
 				<text><![CDATA[Địa chỉ:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="244" y="60" width="137" height="20" uuid="731eb150-8abe-4278-a039-22d0e2e7eb9b"/>
+				<reportElement x="234" y="60" width="137" height="20" uuid="731eb150-8abe-4278-a039-22d0e2e7eb9b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
@@ -282,7 +282,7 @@ where dh.DH_MaDH = $P{MaDH};]]>
 			</textField>
 			<textField pattern="#,##0 VNĐ">
 				<reportElement x="313" y="0" width="68" height="20" uuid="5b22b920-c0f7-45db-8506-897099512d91"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{HH_Gia}]]></textFieldExpression>
