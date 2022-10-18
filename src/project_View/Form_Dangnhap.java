@@ -32,6 +32,19 @@ public class Form_Dangnhap extends javax.swing.JFrame {
         this.setResizable(false);
     }
 
+    public Form_Dangnhap(String user) {
+        initComponents();
+        this.setTitle("Đăng nhập");
+        this.setLocationRelativeTo(null);
+        ImageIcon img = new ImageIcon(new ImageIcon("C:\\Users\\huyb1\\OneDrive\\Máy tính\\JAVA\\Test_PJ_Quanlybanhang\\src\\Img\\logo_login.png").getImage().getScaledInstance(logo_dangnhap.getWidth(), logo_dangnhap.getHeight(), Image.SCALE_SMOOTH));
+        logo_dangnhap.setIcon(img);
+        txt_hidePassword.setVisible(false);
+        txt_ShowPassword.setVisible(true);
+        txt_Taikhoan.setForeground(Color.BLACK);
+        txt_Taikhoan.setText(user);
+        this.setResizable(false);       
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

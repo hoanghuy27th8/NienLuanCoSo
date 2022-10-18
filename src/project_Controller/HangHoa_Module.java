@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import project_Model.DonHang;
 
 /**
  *
@@ -59,6 +60,30 @@ public class HangHoa_Module {
                 ){
             pr.setString(1, mahh);
             return pr.executeUpdate()>0;
+        }
+    }
+    public List<DonHang> listxoaDH_CTDH(String ma) throws Exception {
+        String sql = "select *\n"
+                + "from DON_HANG dh join CHITIETDONHANG ct on ct.DH_MaDH = dh.DH_MaDH\n"
+                + "where ct.HH_MaHH=?";
+        try (
+                Connection con = data_main.connect_main();
+                PreparedStatement pr = con.prepareStatement(sql);
+            ){
+            pr.setString(1, ma);
+            ResultSet rs = pr.executeQuery();
+            List<DonHang> dh = new ArrayList<DonHang>();
+            while (rs.next()) {
+                DonHang d = new DonHang();
+                d.setDH_MaDH(rs.getString("DH_MaDH"));
+                d.setDH_TienGiam(rs.getLong("DH_TienGiam"));
+                d.setDH_TongTien(rs.getLong("DH_TongTien"));
+                d.setDH_NgayLap(rs.getDate("DH_NgayLap"));
+                d.setKH_MaKH(rs.getString("MaKH"));
+                d.setNV_MaNV(rs.getString("MaNV"));
+                dh.add(d);
+            }
+            return dh;
         }
     }
     public List loadHH() throws Exception{

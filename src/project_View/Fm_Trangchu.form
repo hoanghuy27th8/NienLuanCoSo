@@ -59,7 +59,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="br_logo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="menu_Nhanvien" max="32767" attributes="0"/>
+                  <Component id="menu_Nhanvien" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   <Component id="menu_BanHang" min="-2" pref="106" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>

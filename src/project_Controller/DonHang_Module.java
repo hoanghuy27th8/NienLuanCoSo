@@ -36,6 +36,16 @@ public class DonHang_Module {
             return pr.executeUpdate() > 0;
         }
     }
+    public boolean xoaDH(String ma) throws Exception {
+        String sql = "delete from DON_HANG where DH_MaDH = ?";
+        try (
+                Connection con = data_main.connect_main();
+                PreparedStatement pr = con.prepareStatement(sql);
+            ) {
+            pr.setString(1, ma);
+            return pr.executeUpdate() > 0;
+        }
+     }
     
     public List<DonHang> timDH(Date ngayduoi, Date ngaytren) throws Exception{
         String sql ="select * from DON_HANG where DH_NgayLap between ? and ?;";

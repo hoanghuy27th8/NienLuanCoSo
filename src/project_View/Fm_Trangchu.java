@@ -621,7 +621,7 @@ public class Fm_Trangchu extends javax.swing.JFrame {
             .addGroup(pnl_MenuLayout.createSequentialGroup()
                 .addComponent(br_logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menu_Nhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(menu_Nhanvien)
                 .addGap(47, 47, 47)
                 .addComponent(menu_BanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
@@ -860,7 +860,7 @@ public class Fm_Trangchu extends javax.swing.JFrame {
                         .addComponent(btn_InSP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_ThemHH, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -981,7 +981,7 @@ public class Fm_Trangchu extends javax.swing.JFrame {
                     .addComponent(btn_XoaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnl_LoaiSPLayout = new javax.swing.GroupLayout(pnl_LoaiSP);
@@ -1320,11 +1320,11 @@ public class Fm_Trangchu extends javax.swing.JFrame {
                                 .addComponent(btn_themTK)
                                 .addGap(78, 78, 78)
                                 .addComponent(btn_capNhatTK)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                                 .addComponent(btn_xoaTK)
                                 .addGap(102, 102, 102)))
                         .addComponent(btn_lammoiTK)))
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1385,7 +1385,7 @@ public class Fm_Trangchu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2239,6 +2239,9 @@ public class Fm_Trangchu extends javax.swing.JFrame {
         }
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(ad==0) {
+            menu_Nhanvien.setEnabled(false);
+        }
         try {
             QLNV.setVisible(false);
             pnl_BanHang.setVisible(false);
@@ -2620,17 +2623,23 @@ public class Fm_Trangchu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e, "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_SuaHHActionPerformed
-//test thôi
+
     private void btn_XoaHHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaHHActionPerformed
         try {
             HangHoa_Module hhm = new HangHoa_Module();
-            if (JOptionPane.showConfirmDialog(this, "Chắc chắn xóa " + txtMaSP.getText(), "Cảnh báo", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            DonHang_Module dhm = new DonHang_Module();
+            if (JOptionPane.showConfirmDialog(this, "Hành động này sẽ xóa tất cả đơn hàng chứa mã sản phẩm "+txtMaSP.getText()
+                        +"\nBạn vẫn muốn xóa ?", "Cảnh báo", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                List<DonHang> l = hhm.listxoaDH_CTDH(txtMaSP.getText());
+                for(DonHang dh : l){
+                    dhm.xoaDH(dh.getDH_MaDH());
+                }
                 hhm.xoaHH(txtMaSP.getText());
                 JOptionPane.showMessageDialog(this, "Đã xóa thành công");
-                data_table_hh();
             } else {
                 JOptionPane.showMessageDialog(this, "Đã hủy xóa");
             }
+            data_table_hh();
             evenOpenWindowForThongKe();
             data_table_DH();
         } catch (Exception ex) {
@@ -2753,7 +2762,7 @@ public class Fm_Trangchu extends javax.swing.JFrame {
     public int layMaDHcuoi() throws Exception {
         DonHang_Module dhm = new DonHang_Module();
         List<DonHang> ldh = dhm.getDataDonHang();
-        int max = 1;
+        int max = 0;
         for (DonHang dh : ldh) {
             if (max < Integer.parseInt(dh.getDH_MaDH().substring((dh.getDH_MaDH().lastIndexOf("_") + 1)))) {
                 max = Integer.parseInt(dh.getDH_MaDH().substring((dh.getDH_MaDH().lastIndexOf("_") + 1)));
@@ -3427,7 +3436,7 @@ public class Fm_Trangchu extends javax.swing.JFrame {
 
     private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
         this.setVisible(false);
-        Form_Dangnhap dn = new Form_Dangnhap();
+        Form_Dangnhap dn = new Form_Dangnhap(user);
         dn.setVisible(true);
     }//GEN-LAST:event_jLabel5MousePressed
 
@@ -3447,14 +3456,19 @@ public class Fm_Trangchu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_InHDActionPerformed
 
     private void menu_NhanvienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_NhanvienMousePressed
-        jtp_SanPham.setVisible(false);
-        pnl_QLNV.setVisible(true);
-        pnl_BanHang.setVisible(false);
-        jtp_thongke.setVisible(false);
-        menu_sanpham.setBackground(new Color(0, 153, 153));
-        menu_BanHang.setBackground(new Color(0, 153, 153));
-        menu_Nhanvien.setBackground(new Color(0, 102, 102));
-        menu_ThongKe.setBackground(new Color(0, 153, 153));
+        if (ad > 0) {
+            jtp_SanPham.setVisible(false);
+            pnl_QLNV.setVisible(true);
+            pnl_BanHang.setVisible(false);
+            jtp_thongke.setVisible(false);
+            menu_sanpham.setBackground(new Color(0, 153, 153));
+            menu_BanHang.setBackground(new Color(0, 153, 153));
+            menu_Nhanvien.setBackground(new Color(0, 102, 102));
+            menu_ThongKe.setBackground(new Color(0, 153, 153));
+        }else{
+            JOptionPane.showMessageDialog(this, "Bạn không đủ quyền truy cập", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_menu_NhanvienMousePressed
 
     private void menu_BanHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_BanHangMousePressed
@@ -3516,6 +3530,9 @@ public class Fm_Trangchu extends javax.swing.JFrame {
         }
         txt_TongGiaTriDHTK.setText(String.valueOf(tonggt));
         txt_TongDHTimThay.setText(String.valueOf(list_DH.size()));
+        while (tbl_CTDH_TimThay.getRowCount() > 0) { // xóa bảng chi tiết đươn hàng đang load ra màn hình
+            tbl_CTDH_TimThay.removeRow(0);
+        }
     }
 
     /**
